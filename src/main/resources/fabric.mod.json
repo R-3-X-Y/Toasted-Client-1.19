@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "toastedclient",
+  "version": "${version}",
+
+  "name": "Toasted Client",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "W4lking-T0aster"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.w4lkingt0aster.toastedclient.ToastedClient"
+    ],
+    "client": [
+      "me.w4lkingt0aster.toastedclient.ToastedClientClient"
+    ]
+  },
+  "mixins": [
+    "toastedclient.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
