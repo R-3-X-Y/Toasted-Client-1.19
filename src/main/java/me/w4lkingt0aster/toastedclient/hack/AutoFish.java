@@ -11,13 +11,14 @@ public class AutoFish {
             recastRod = -1;
         }
         if (recastRod > 0) {
-            if (client.player.fishHook != null) {
-                recastRod = -1;
-            }
             recastRod--;
         }
         else if (recastRod == 0) {
-            client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
+            if (client.player != null && client.interactionManager != null) {
+                if (client.player.fishHook == null) {
+                    client.interactionManager.interactItem(client.player, Hand.MAIN_HAND);
+                }
+            }
             recastRod = -1;
         }
     }

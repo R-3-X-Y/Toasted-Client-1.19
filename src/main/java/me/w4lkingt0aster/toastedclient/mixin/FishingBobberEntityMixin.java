@@ -22,7 +22,7 @@ public class FishingBobberEntityMixin {
 
         MinecraftClient client = MinecraftClient.getInstance();
 
-        if (caughtFish && (boolean)ToastedClientConfig.get("AUTO_FISH_ENABLE").getValue()) {
+        if (caughtFish && (boolean)ToastedClientConfig.get("AUTO_FISH_ENABLE").getValue() && client.interactionManager != null) {
             client.interactionManager.interactItem(client.player, Hand.MAIN_HAND); // Reel in bobber
             ToastedClientClient.instance.autoFish.setRecastRod((int)ToastedClientConfig.get("AUTO_FISH_RECAST_DELAY").getValue()); // Set recast delay
         }

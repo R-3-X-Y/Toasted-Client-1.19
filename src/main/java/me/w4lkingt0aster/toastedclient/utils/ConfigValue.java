@@ -12,6 +12,7 @@ public abstract class ConfigValue {
     public final String displayName;
     private final Category category;
     public String getConfigKey() { return configKey; }
+    public Category getCategory() { return category; }
     public abstract Object getValue();
     public abstract void setValue(Object value);
     public abstract void resetValue();

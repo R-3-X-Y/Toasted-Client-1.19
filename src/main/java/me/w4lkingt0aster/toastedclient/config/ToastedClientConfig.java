@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import me.w4lkingt0aster.toastedclient.ToastedClient;
-import me.w4lkingt0aster.toastedclient.screen.widgets.DoubleFieldWidget;
 import me.w4lkingt0aster.toastedclient.utils.BoolConfigValue;
 import me.w4lkingt0aster.toastedclient.utils.ConfigValue;
 import me.w4lkingt0aster.toastedclient.utils.DoubleConfigValue;
@@ -18,13 +17,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ToastedClientConfig {
-    private static String configPath;
     private static Path path;
-    private static Map<String, ConfigValue> configValues = new HashMap<>();
+    private final static Map<String, ConfigValue> configValues = new HashMap<>();
 
     public static void registerConfigs() {
         //Create config values
@@ -34,9 +31,8 @@ public class ToastedClientConfig {
         configValues.put("FLY_HACK_SPEED_MULTIPLIER", new DoubleConfigValue("FLY_HACK_SPEED_MULTIPLIER", "Fly Speed Multiplier", ConfigValue.Category.Movement, 1));
 
         //Path variables for reading/writing config file
-        configPath = FabricLoader.getInstance().getConfigDir() + "\\" + ToastedClient.MOD_ID + ".json";
-        path = Paths.get(configPath);
-        File configFile = new File(configPath);
+        path = Paths.get(FabricLoader.getInstance().getConfigDir() + "\\" + ToastedClient.MOD_ID + ".json");
+        File configFile = path.toFile();
         try {
             if (configFile.createNewFile()) {
                 writeConfigFile();

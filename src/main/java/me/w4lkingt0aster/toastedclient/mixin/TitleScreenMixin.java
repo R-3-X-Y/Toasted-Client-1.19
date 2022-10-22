@@ -17,7 +17,7 @@ public abstract class TitleScreenMixin extends Screen {
     @Inject(at = @At("HEAD"), method = "initWidgetsNormal")
     private void initWidgetsNormal(CallbackInfo ci) {
         this.addDrawableChild(new ButtonWidget(10, 10, 90, 20, Text.of("Toasted Client"), (button) -> {
-            this.client.setScreen(new AllHacksScreen(this, this.client.options));
+            if (client != null) this.client.setScreen(new AllHacksScreen(this, this.client.options));
         }));
     }
 }

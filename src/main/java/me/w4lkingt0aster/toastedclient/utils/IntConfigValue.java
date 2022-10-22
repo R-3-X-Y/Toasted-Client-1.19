@@ -40,7 +40,7 @@ public class IntConfigValue extends ConfigValue{
         widget.setText(String.valueOf(value));
         widget.setChangedListener(s -> {
             try {
-                value = Integer.parseInt(s);
+                if (!s.isBlank()) value = Integer.parseInt(s);
             }
             catch (NumberFormatException e) {
                 ToastedClient.LOGGER.error("Unable to convert string into int.");

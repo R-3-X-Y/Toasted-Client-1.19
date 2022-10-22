@@ -25,16 +25,6 @@ public class AllHacksScreen extends Screen {
         this.settings = gameOptions;
     }
 
-    Text autoFishEnableText() {
-        if ((boolean)ToastedClientConfig.get("AUTO_FISH_ENABLE").getValue()) {
-            return Text.of("Auto Fish \2472Enabled");
-        }
-        else
-        {
-            return Text.of("Auto Fish \2474Disabled");
-        }
-    }
-
     protected void init() {
         int i = 0;
         int xZero = 0;
@@ -59,7 +49,7 @@ public class AllHacksScreen extends Screen {
             i++;
         }
         this.addDrawableChild(new ButtonWidget(this.width / 2 - 100, this.height - 40, 200, 20, ScreenTexts.DONE, (button) -> {
-            this.client.setScreen(this.parent);
+            if (this.client != null) this.client.setScreen(this.parent);
             ToastedClientConfig.writeConfigFile();
         }));
 

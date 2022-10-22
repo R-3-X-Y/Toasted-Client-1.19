@@ -40,7 +40,7 @@ public class DoubleConfigValue extends ConfigValue{
         widget.setText(String.valueOf(value));
         widget.setChangedListener(s -> {
             try {
-                value = Double.parseDouble(s);
+                if (!s.isBlank()) value = Double.parseDouble(s);
             }
             catch (NumberFormatException e) {
                 ToastedClient.LOGGER.error("Unable to convert string into double.");
